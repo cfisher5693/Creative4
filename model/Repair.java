@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Graphics2D;
-
 public abstract class Repair implements CRender {
 	private int cost;
 	private String device;

@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -18,12 +19,13 @@ public class MainScreen {
 	private RCanvas canvas;
 	private int n;
 	private JTextField inputField = new JTextField();
+	private JTextField numField = new JTextField();
 	private JButton addButton = new JButton("Add");
 	private JButton clearButton = new JButton("Clear");
 	private JButton enterButton = new JButton("Enter");
 	private JButton decimalKey = new JButton(".");
 	private JButton[] numKeys;
-	private String[] devices = new String[] {"Phone", "Console", "Computer"};
+	private String[] devices = new String[] {"Mobile", "Console", "Computer"};
 	private String[] services = new String[] {"Standard", "Advanced", "Premium"};
 	private JComboBox<String> deviceList = new JComboBox<>(devices);
 	private JComboBox<String> serviceList = new JComboBox<>(services);
@@ -44,6 +46,9 @@ public class MainScreen {
 		keypad.setLayout(new GridLayout(4, 3));
 		servicePanel.add(clearButton);
 		servicePanel.add(deviceList);
+		inputField.setFont(new Font("Courier New", Font.BOLD, 16));
+		servicePanel.add(inputField);
+		inputField.setEditable(true);
 		servicePanel.add(serviceList);
 		servicePanel.add(addButton);
 		clearButton.addActionListener(listener);
@@ -65,7 +70,9 @@ public class MainScreen {
 		enterButton.addActionListener(listener);
 		keypad.setBorder(BorderFactory.createTitledBorder("Keypad"));
 		southPanel.add(keypad);
-		northPanel.add(inputField);
+		numField.setFont(new Font("Courier New", Font.BOLD, 16));
+		northPanel.add(numField);
+		numField.setEditable(false);
 		cp.add(BorderLayout.CENTER, canvas);
 		cp.add(BorderLayout.SOUTH, southPanel);
 		cp.add(BorderLayout.NORTH, northPanel);
@@ -109,5 +116,9 @@ public class MainScreen {
 
 	public JTextField getInputField() {
 		return inputField;
+	}
+
+	public JTextField getNumField() {
+		return numField;
 	}
 }
