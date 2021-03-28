@@ -49,12 +49,14 @@ public class MainScreen {
 		inputField.setFont(new Font("Courier New", Font.BOLD, 16));
 		servicePanel.add(inputField);
 		inputField.setEditable(true);
+		inputField.setColumns(10);
 		servicePanel.add(serviceList);
 		servicePanel.add(addButton);
 		clearButton.addActionListener(listener);
-		deviceList.addActionListener(listener);
-		serviceList.addActionListener(listener);
+		//deviceList.addActionListener(listener);
+		//serviceList.addActionListener(listener);
 		addButton.addActionListener(listener);
+		inputField.addActionListener(listener);
 		servicePanel.setBorder(BorderFactory.createTitledBorder("Add Charges"));
 		southPanel.add(servicePanel);
 		numKeys = new JButton[10];
@@ -62,6 +64,7 @@ public class MainScreen {
 		for(char i = '0'; i <= '9'; i++) {
 			numKeys[n] = new JButton("" + i);
 			keypad.add(numKeys[n]);
+			numKeys[n].addActionListener(listener);
 			n++;
 		}
 		keypad.add(decimalKey);
@@ -73,6 +76,7 @@ public class MainScreen {
 		numField.setFont(new Font("Courier New", Font.BOLD, 16));
 		northPanel.add(numField);
 		numField.setEditable(false);
+		numField.setColumns(10);
 		cp.add(BorderLayout.CENTER, canvas);
 		cp.add(BorderLayout.SOUTH, southPanel);
 		cp.add(BorderLayout.NORTH, northPanel);
